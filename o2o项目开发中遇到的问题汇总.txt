@@ -1,0 +1,28 @@
+1.idea创建maven web项目步骤：
+    create new project --> maven
+	--> Project SDK --> Create from archetype --> maven-archetype-webapp 
+	--> Next --> GroupId,ArtifactId --> 配置maven settings.xml路径 --> Properties 添加 archetypeCatalog=internal 参数
+	--> Next --> 检查下不做任何修改
+	--> Finish
+
+2.IDEA生成MAVEN项目报错，无法访问http://repo.maven.apache.org/maven2网站
+	找到<mirrors>节点，把下面内容写入节点内 配置为阿里云的镜像
+	<mirror>
+      <id>alimaven</id>
+      <name>aliyun maven</name>
+      <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+      <mirrorOf>central</mirrorOf>
+	</mirror>
+
+3.ssm配置过程
+pom中引入依赖的ssm jar包
+jdbc.properties中指定数据库的连接方式
+mybatis-config.xml中配置mybatis
+spring-dao.xml中加载jdbc.properties、mybatis-config.xml，
+    创建dataSource连接池，配置好mybatis与数据库交互的方式
+spring-service.xml中配置事务管理，dataSource注入事务管理器
+spring-web.xml中dispatcher如何响应url请求
+web.xml中spring-dispatcher做为servlet注入来响应前端请求，
+    整合spring-dao.xml、spring-service.xml、spring-web.xml
+
+
