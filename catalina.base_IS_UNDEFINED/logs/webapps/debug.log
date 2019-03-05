@@ -1,0 +1,6 @@
+2019-03-05 17:02:00.811{%PARSER_ERROR[thead]}DEBUG com.testssm.o2o.dao.AreaDao.queryArea - ==>  Preparing: select area_id,area_name,priority,create_time,last_edit_time from tb_area order by priority desc 
+2019-03-05 17:02:00.922{%PARSER_ERROR[thead]}DEBUG com.testssm.o2o.dao.AreaDao.queryArea - ==> Parameters: 
+2019-03-05 17:02:00.955{%PARSER_ERROR[thead]}DEBUG com.testssm.o2o.dao.AreaDao.queryArea - <==      Total: 2
+2019-03-05 17:02:24.803{%PARSER_ERROR[thead]}DEBUG com.testssm.o2o.dao.AreaDao.queryArea - ==>  Preparing: select area_id,area_name,priority,create_time,last_edit_time from tb_area order by priority desc 
+2019-03-05 17:02:24.873{%PARSER_ERROR[thead]}DEBUG com.testssm.o2o.dao.AreaDao.queryArea - ==> Parameters: 
+2019-03-05 17:02:24.906{%PARSER_ERROR[thead]}DEBUG com.testssm.o2o.dao.AreaDao.queryArea - <==      Total: 2

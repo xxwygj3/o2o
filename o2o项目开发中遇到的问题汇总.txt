@@ -25,4 +25,9 @@ spring-web.xml中dispatcher如何响应url请求
 web.xml中spring-dispatcher做为servlet注入来响应前端请求，
     整合spring-dao.xml、spring-service.xml、spring-web.xml
 
+4.Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLNonTransientConnectionException
+使用MySql8.0.1数据库连接不上，主要原因是因为使用5点几的驱动如（mysql-connector-java-5.1.37-bin.jar），
+所以需要改成使用8点几的驱动如（mysql-connector-java-8.0.12.jar）
+
+
 
