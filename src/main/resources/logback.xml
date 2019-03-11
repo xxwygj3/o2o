@@ -7,7 +7,7 @@
     <property name="log.filePath" value="${catalina.base}/logs/webapps"/>
     <property name="log.pattern" value="%d{yyyy-MM-dd HH:mm:ss.SSS}{%thead}%-5level %logger{50} - %msg%n"/>
     <!-- 控制台设置 -->
-    <appender namae="consoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+    <appender name="consoleAppender" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
             <pattern>${log.pattern}</pattern>
         </encoder>
@@ -20,7 +20,7 @@
             <!-- 文件路径 -->
             <fileNamePattern>${log.filePath}/debug.%d{yyyy-MM-dd}.log.gz</fileNamePattern>
             <!-- 文件最大保存历史数量 -->
-            <MaxHitory>${log.maxHistory}</MaxHitory>
+            <maxHistory>${log.maxHistory}</maxHistory>
         </rollingPolicy>
         <encoder>
             <pattern>${log.pattern}</pattern>
@@ -39,7 +39,7 @@
             <!-- 文件路径 -->
             <fileNamePattern>${log.filePath}/info.%d{yyyy-MM-dd}.log.gz</fileNamePattern>
             <!-- 文件最大保存历史数量 -->
-            <MaxHitory>${log.maxHistory}</MaxHitory>
+            <maxHistory>${log.maxHistory}</maxHistory>
         </rollingPolicy>
         <encoder>
             <pattern>${log.pattern}</pattern>
@@ -58,7 +58,7 @@
             <!-- 文件路径 -->
             <fileNamePattern>${log.filePath}/error.%d{yyyy-MM-dd}.log.gz</fileNamePattern>
             <!-- 文件最大保存历史数量 -->
-            <MaxHitory>${log.maxHistory}</MaxHitory>
+            <maxHistory>${log.maxHistory}</maxHistory>
         </rollingPolicy>
         <encoder>
             <pattern>${log.pattern}</pattern>

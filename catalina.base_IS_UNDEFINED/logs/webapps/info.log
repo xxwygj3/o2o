@@ -1,6 +1,9 @@
-2019-03-05 17:02:00.811{%PARSER_ERROR[thead]}DEBUG com.testssm.o2o.dao.AreaDao.queryArea - ==>  Preparing: select area_id,area_name,priority,create_time,last_edit_time from tb_area order by priority desc 
-2019-03-05 17:02:00.922{%PARSER_ERROR[thead]}DEBUG com.testssm.o2o.dao.AreaDao.queryArea - ==> Parameters: 
-2019-03-05 17:02:00.955{%PARSER_ERROR[thead]}DEBUG com.testssm.o2o.dao.AreaDao.queryArea - <==      Total: 2
-2019-03-05 17:02:24.803{%PARSER_ERROR[thead]}DEBUG com.testssm.o2o.dao.AreaDao.queryArea - ==>  Preparing: select area_id,area_name,priority,create_time,last_edit_time from tb_area order by priority desc 
-2019-03-05 17:02:24.873{%PARSER_ERROR[thead]}DEBUG com.testssm.o2o.dao.AreaDao.queryArea - ==> Parameters: 
-2019-03-05 17:02:24.906{%PARSER_ERROR[thead]}DEBUG com.testssm.o2o.dao.AreaDao.queryArea - <==      Total: 2
+2019-03-06 09:52:03.091{%PARSER_ERROR[thead]}DEBUG com.testssm.o2o.dao.ShopDao.insertShop - ==>  Preparing: INSERT INTO tb_shop(owner_id,area_id,shop_category_id,shop_name,shop_desc,shop_addr,phone,shop_img ,priority,create_time,last_edit_time,enable_status,advice) VALUE (?,?,?,?,?,? ,?,?,?,?,?,?,?) 
+2019-03-06 09:52:03.195{%PARSER_ERROR[thead]}DEBUG com.testssm.o2o.dao.ShopDao.insertShop - ==> Parameters: 1(Long), 2(Integer), 1(Long), 测试的店铺(String), test(String), test(String), test(String), test(String), null, 2019-03-06 09:52:02.435(Timestamp), null, 1(Integer), 审核中(String)
+2019-03-06 09:52:03.218{%PARSER_ERROR[thead]}DEBUG com.testssm.o2o.dao.ShopDao.insertShop - <==    Updates: 1
+2019-03-06 10:19:37.630{%PARSER_ERROR[thead]}DEBUG com.testssm.o2o.dao.ShopDao.updateShop - ==>  Preparing: UPDATE tb_shop SET shop_desc=?, shop_addr=?, last_edit_time=? where shop_id=? 
+2019-03-06 10:19:37.711{%PARSER_ERROR[thead]}DEBUG com.testssm.o2o.dao.ShopDao.updateShop - ==> Parameters: 测试描述(String), 测试地址(String), 2019-03-06 10:19:36.901(Timestamp), 1(Long)
+2019-03-06 10:19:37.780{%PARSER_ERROR[thead]}DEBUG com.testssm.o2o.dao.ShopDao.updateShop - <==    Updates: 1
+2019-03-11 16:58:07.729{%PARSER_ERROR[thead]}DEBUG com.testssm.o2o.dao.ShopDao.insertShop - ==>  Preparing: INSERT INTO tb_shop(owner_id,area_id,shop_category_id,shop_name,shop_desc,shop_addr,phone,shop_img ,priority,create_time,last_edit_time,enable_status,advice) VALUE (?,?,?,?,?,? ,?,?,?,?,?,?,?) 
+2019-03-11 16:58:07.813{%PARSER_ERROR[thead]}DEBUG com.testssm.o2o.dao.ShopDao.insertShop - ==> Parameters: 1(Long), 2(Integer), 1(Long), 测试的店铺1(String), test1(String), test1(String), test1(String), null, null, 2019-03-11 16:58:07.697(Timestamp), 2019-03-11 16:58:07.697(Timestamp), 0(Integer), 审核中(String)
+2019-03-11 16:58:07.816{%PARSER_ERROR[thead]}DEBUG com.testssm.o2o.dao.ShopDao.insertShop - <==    Updates: 1

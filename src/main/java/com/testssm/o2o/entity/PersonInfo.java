@@ -7,7 +7,7 @@ import java.util.Date;
  */
 public class PersonInfo {
     // ID
-    private Integer userId;
+    private Long userId;
     // 姓名
     private String name;
     // 头像
@@ -25,11 +25,11 @@ public class PersonInfo {
     // 修改时间
     private Date lastEditTime;
 
-    public Integer getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public void setUserId(Integer userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
     }
 
