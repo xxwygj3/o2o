@@ -9,6 +9,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import javax.imageio.ImageIO;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Random;
@@ -22,21 +23,23 @@ public class ImageUtil {
 
     /**
      * 对图片进行压缩并加水印
-     * @param uploadFile
+     * @param thumbnailInputStream
+     * @param fileName
      * @param targetAddr
      * @return
      */
-    public static String generateThumbnail(File uploadFile, String targetAddr){
+    public static String generateThumbnail(InputStream thumbnailInputStream,String fileName,String targetAddr){
         String realFileName = getRandomFileName();//生成随机文件名
-        String extension = getFileExtension(uploadFile);//获取输入文件流的扩展名
+        String extension = getFileExtension(fileName);//获取输入文件流的扩展名
         makeDirPath(targetAddr);//创建目标路径所涉及到的目录
         String relativeAddr = targetAddr + realFileName + extension;//获取图片相对路径（目标路径+随机名+扩展名）
         logger.debug("current relativeAddr is:" + relativeAddr);
         File dest = new File(PathUtil.getImgBasePath() + relativeAddr);//新生成文件路径(根路径+targetAddr + realFileName + extension)
         logger.debug("current complete addr is:" + PathUtil.getImgBasePath() + relativeAddr);
+        logger.debug("basePath:"+basePath);
         //创建缩略图并加水映
         try {
-            Thumbnails.of(uploadFile)
+            Thumbnails.of(thumbnailInputStream)
                     .size(200,200)
                     .watermark(Positions.BOTTOM_RIGHT,ImageIO.read(new File(basePath+"/watermark.jpg")),0.25f)
                     .outputQuality(0.8f)
@@ -85,12 +88,11 @@ public class ImageUtil {
 
     /**
      * 获取输入文件流的扩展名
-     * @param uploadFile
+     * @param fileName
      * @return
      */
-    private static String getFileExtension(File uploadFile) {
-        String filename = uploadFile.getName();
-        return filename.substring(filename.lastIndexOf("."));
+    private static String getFileExtension(String fileName) {
+        return fileName.substring(fileName.lastIndexOf("."));
     }
 
     /**

@@ -1,12 +1,14 @@
 package com.testssm.o2o.util;
 
+import java.io.File;
+
 public class PathUtil {
     //文件分隔符
-    private static String seperator = System.getProperty("file.seperator");
+    private static final String seperator = File.separator;
     //图片根路径
     public static String getImgBasePath(){
         //操作系统名称
-        String os = System.getProperty("os.name");
+        String os = System.getProperties().getProperty("os.name");
         String basePath = "";
         if(os.toLowerCase().startsWith("win")){//windows
             basePath = "D:/uploadimg/image/";
@@ -19,7 +21,7 @@ public class PathUtil {
     }
 
     public static String getShopImagePath(long shopId){
-        String imagePath = "/upload/item/shop/" + shopId + "/";
+        String imagePath = "/item/shop/" + shopId + "/";
         return imagePath.replace("/",seperator);
     }
 }

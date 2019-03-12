@@ -11,9 +11,9 @@ import com.testssm.o2o.util.PathUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import java.io.File;
+import java.io.InputStream;
 import java.util.Date;
 
 @Service
@@ -22,7 +22,7 @@ public class ShopServiceImpl implements ShopService {
     private ShopDao shopDao;
     @Override
     @Transactional//添加事务支持
-    public ShopExecution addShop(Shop shop, File shopImg) {
+    public ShopExecution addShop(Shop shop, InputStream shopImgInputStream, String fileName) throws ShopOperationException {
         //空值判断
         if(shop == null){
             return new ShopExecution(ShopStateEnum.NULL_SHOP);
@@ -37,11 +37,12 @@ public class ShopServiceImpl implements ShopService {
             if(effectedNum <= 0){
                 throw new ShopOperationException("店铺创建失败");
             }else{
-                if(shopImg != null){
+                if(shopImgInputStream != null){
                     //存储图片
                     try {
-                        addShopImg(shop,shopImg);
+                        addShopImg(shop,shopImgInputStream,fileName);
                     }catch (Exception e){
+                        e.printStackTrace();
                         throw new ShopOperationException("addShopImg error:"+e.getMessage());
                     }
                     //更新店铺的图片地址
@@ -57,10 +58,10 @@ public class ShopServiceImpl implements ShopService {
         return new ShopExecution(ShopStateEnum.CHECK,shop);
     }
 
-    private void addShopImg(Shop shop,File shopImg){
+    private void addShopImg(Shop shop,InputStream shopImgInputStream,String fileName){
         //获取shop图片目录的相对值路径
         String dest = PathUtil.getShopImagePath(shop.getShopId());
-        String shopImgAddr = ImageUtil.generateThumbnail(shopImg,dest);
-        //shop.setShopImg(shopImgAddr);
+        String shopImgAddr = ImageUtil.generateThumbnail(shopImgInputStream,fileName,dest);
+        shop.setShopImg(shopImgAddr);
     }
 }

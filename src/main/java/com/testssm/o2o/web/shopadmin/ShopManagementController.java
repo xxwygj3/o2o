@@ -5,6 +5,7 @@ import com.testssm.o2o.dto.ShopExecution;
 import com.testssm.o2o.entity.PersonInfo;
 import com.testssm.o2o.entity.Shop;
 import com.testssm.o2o.enums.ShopStateEnum;
+import com.testssm.o2o.exceptions.ShopOperationException;
 import com.testssm.o2o.service.ShopService;
 import com.testssm.o2o.util.HttpServletRequestUtil;
 import com.testssm.o2o.util.ImageUtil;
@@ -57,65 +58,30 @@ public class ShopManagementController {
         //2.注册店铺
         if(shop != null && shopImg != null){
             PersonInfo owner = new PersonInfo();
+            //Session
             owner.setUserId(1L);
             shop.setOwner(owner);
-            File shopImgFile = new File(PathUtil.getImgBasePath() + ImageUtil.getRandomFileName());
+            ShopExecution se = null;
             try {
-                shopImgFile.createNewFile();
+                se = shopService.addShop(shop,shopImg.getInputStream(),shopImg.getOriginalFilename());
+                if(se.getState() == ShopStateEnum.CHECK.getState()){
+                    modelMap.put("success",true);
+                }else {
+                    modelMap.put("success",false);
+                    modelMap.put("errMsg",se.getStateInfo());
+                }
+            } catch (ShopOperationException e) {
+                modelMap.put("success",false);
+                modelMap.put("errMsg",e.getMessage());
             } catch (IOException e) {
                 modelMap.put("success",false);
                 modelMap.put("errMsg",e.getMessage());
-                return modelMap;
-            }
-            try {
-                inputStreamToFile(shopImg.getInputStream(),shopImgFile);
-            } catch (IOException e) {
-                modelMap.put("success",false);
-                modelMap.put("errMsg",e.getMessage());
-                return modelMap;
-            }
-            ShopExecution se = shopService.addShop(shop,shopImgFile);
-            if(se.getState() == ShopStateEnum.CHECK.getState()){
-                modelMap.put("success",true);
-            }else {
-                modelMap.put("success",false);
-                modelMap.put("errMsg",se.getStateInfo());
             }
             return modelMap;
         }else{
             modelMap.put("success",false);
             modelMap.put("errMsg","请输入店铺信息");
             return modelMap;
-        }
-    }
-
-    /**
-     * 转换
-     * @param ins
-     * @param file
-     */
-    private static void inputStreamToFile(InputStream ins, File file){
-        FileOutputStream os = null;
-        try {
-            os = new FileOutputStream(file);
-            int bytesRead = 0;
-            byte[] buffer = new byte[1024];
-            while ((bytesRead = ins.read(buffer)) != -1){
-                os.write(buffer,0,bytesRead);
-            }
-        }catch (Exception e){
-            throw new RuntimeException("调用inputStreamToFile产生异常:" + e.getMessage());
-        }finally {
-            try {
-                if(os != null){
-                    os.close();
-                }
-                if(ins != null){
-                    ins.close();
-                }
-            }catch (IOException e){
-                throw new RuntimeException("调用inputStreamToFile关闭io产生异常:" + e.getMessage());
-            }
         }
     }
 }
