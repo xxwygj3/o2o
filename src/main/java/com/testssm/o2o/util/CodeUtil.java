@@ -19,7 +19,7 @@ public class CodeUtil {
         String verifyCodeExpected = (String) session.getAttribute("code");
         // 获取用户输入的验证码
         String verifyCodeActual = HttpServletRequestUtil.getString(request,"verifyCodeActual");
-        if(verifyCodeActual == null || !verifyCodeActual.equals(verifyCodeExpected)){
+        if(verifyCodeActual == null || !verifyCodeActual.equalsIgnoreCase(verifyCodeExpected)){
             return false;
         }
         return true;

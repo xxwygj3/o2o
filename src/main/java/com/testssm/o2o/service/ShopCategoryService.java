@@ -5,5 +5,5 @@ import com.testssm.o2o.entity.ShopCategory;
 import java.util.List;
 
 public interface ShopCategoryService {
-    List<ShopCategory> getShopCategoryList();
+    List<ShopCategory> getShopCategoryList(ShopCategory shopCategoryCondition);
 }

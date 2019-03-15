@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.io.File;
 import java.io.InputStream;
 import java.util.Date;
 
@@ -20,6 +19,41 @@ import java.util.Date;
 public class ShopServiceImpl implements ShopService {
     @Autowired
     private ShopDao shopDao;
+
+    @Override
+    public Shop getByShopId(long shopId) {
+        return shopDao.queryByShopId(shopId);
+    }
+
+    @Override
+    public ShopExecution modifyShop(Shop shop, InputStream shopImgInputStream, String fileName) throws ShopOperationException {
+        if(shop == null || shop.getShopId() == null){
+            return new ShopExecution(ShopStateEnum.NULL_SHOP);
+        }else{
+            try {
+                //1.判断是否需要处理图片
+                if(shopImgInputStream != null && fileName != null && !"".equals(fileName)){
+                    Shop tempShop = shopDao.queryByShopId(shop.getShopId());
+                    if(tempShop.getShopImg() != null){
+                        ImageUtil.deleteFileOrPath(tempShop.getShopImg());
+                    }
+                    addShopImg(shop,shopImgInputStream,fileName);
+                }
+                //2.更换店铺信息
+                shop.setLastEditTime(new Date());
+                int effectecNum = shopDao.updateShop(shop);
+                if(effectecNum <= 0){
+                    return new ShopExecution(ShopStateEnum.INNER_ERROR);
+                }else {
+                    shop = shopDao.queryByShopId(shop.getShopId());
+                    return new ShopExecution(ShopStateEnum.SUCCESS,shop);
+                }
+            }catch (Exception e){
+                throw new ShopOperationException("modifyShop error:"+e.getMessage());
+            }
+        }
+    }
+
     @Override
     @Transactional//添加事务支持
     public ShopExecution addShop(Shop shop, InputStream shopImgInputStream, String fileName) throws ShopOperationException {
