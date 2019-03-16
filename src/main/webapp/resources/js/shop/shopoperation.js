@@ -4,7 +4,7 @@ $(function () {
     var initUrl = '/shopadmin/getshopinitinfo';
     var registerShopUrl = '/shopadmin/registershop';
     var shopInfpUrl = "/shopadmin/getshopbyid?shopId="+shopId;
-    var editShopUrl = "/shop/modifyshop";
+    var editShopUrl = "/shopadmin/modifyshop";
     if(!isEdit){
         getShopInitInfo();
     }else {
@@ -52,53 +52,52 @@ $(function () {
                 $("#area").html(tempAreaHtml);
             }
         });
-        $("#submit").click(function () {
-            var shop = {};
-            if(isEdit){
-                shop.shopId = shopId;
-            }
-            shop.shopName = $("#shop-name").val();
-            shop.shopAddr = $("#shop-addr").val();
-            shop.phone = $("#shop-phone").val();
-            shop.shopDesc = $("#shop-desc").val();
-            shop.shopCategory = {
-                shopCategoryId:$("#shop-category").find('option').not(function () {
-                    return !this.selected;
-                }).data('id')
-            };
-            shop.area = {
-                areaId:$("#area").find('option').not(function () {
-                    return !this.selected;
-                }).data('id')
-            };
-            var shopImg = $("#shop-img")[0].files[0];
-            var formData = new FormData();
-            formData.append('shopImg',shopImg);
-            formData.append('shopStr',JSON.stringify(shop));
-            var verifyCodeActual = $("#j_captcha").val();
-            if(!verifyCodeActual){
-                $.toast("请输入验证码");
-                return
-            }
-            formData.append('verifyCodeActual',verifyCodeActual);
-            $.ajax({
-                url:(isEdit ? editShopUrl : registerShopUrl),
-                type:'POST',
-                data:formData,
-                contentType:false,
-                processData:false,
-                cache:false,
-                success:function (data) {
-                    if(data.success){
-                        $.toast('提交成功！')
-                    }else {
-                        $.toast('提交失败！' + data.errMsg);
-                    }
-                    $("#captcha_img").click();
-                }
-            })
-        })
     }
 
-
+    $("#submit").click(function () {
+        var shop = {};
+        if(isEdit){
+            shop.shopId = shopId;
+        }
+        shop.shopName = $("#shop-name").val();
+        shop.shopAddr = $("#shop-addr").val();
+        shop.phone = $("#shop-phone").val();
+        shop.shopDesc = $("#shop-desc").val();
+        shop.shopCategory = {
+            shopCategoryId:$("#shop-category").find('option').not(function () {
+                return !this.selected;
+            }).data('id')
+        };
+        shop.area = {
+            areaId:$("#area").find('option').not(function () {
+                return !this.selected;
+            }).data('id')
+        };
+        var shopImg = $("#shop-img")[0].files[0];
+        var formData = new FormData();
+        formData.append('shopImg',shopImg);
+        formData.append('shopStr',JSON.stringify(shop));
+        var verifyCodeActual = $("#j_captcha").val();
+        if(!verifyCodeActual){
+            $.toast("请输入验证码");
+            return
+        }
+        formData.append('verifyCodeActual',verifyCodeActual);
+        $.ajax({
+            url:(isEdit ? editShopUrl : registerShopUrl),
+            type:'POST',
+            data:formData,
+            contentType:false,
+            processData:false,
+            cache:false,
+            success:function (data) {
+                if(data.success){
+                    $.toast('提交成功！')
+                }else {
+                    $.toast('提交失败！' + data.errMsg);
+                }
+                $("#captcha_img").click();
+            }
+        })
+    });
 })
