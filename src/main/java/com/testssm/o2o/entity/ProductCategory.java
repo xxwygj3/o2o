@@ -15,7 +15,7 @@ public class ProductCategory {
     // 创建时间
     private Date createTime;
     // 店铺ID
-    private Shop shop;
+    private Long shopId;
 
     public Long getProductCategoryId() {
         return ProductCategoryId;
@@ -49,11 +49,11 @@ public class ProductCategory {
         this.createTime = createTime;
     }
 
-    public Shop getShop() {
-        return shop;
+    public Long getShopId() {
+        return shopId;
     }
 
-    public void setShop(Shop shop) {
-        this.shop = shop;
+    public void setShopId(Long shopId) {
+        this.shopId = shopId;
     }
 }
