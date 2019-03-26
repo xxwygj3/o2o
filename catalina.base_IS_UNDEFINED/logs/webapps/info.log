@@ -1,14 +1,44 @@
-2019-03-20 10:55:56.583{%PARSER_ERROR[thead]}DEBUG c.t.o.d.P.queryProductCategoryList - ==>  Preparing: select product_category_id, product_category_name, priority, create_time, shop_id FROM tb_product_category WHERE shop_id = ? 
-2019-03-20 10:55:56.727{%PARSER_ERROR[thead]}DEBUG c.t.o.d.P.queryProductCategoryList - ==> Parameters: 1(Long)
-2019-03-20 10:55:56.769{%PARSER_ERROR[thead]}DEBUG c.t.o.d.P.queryProductCategoryList - <==      Total: 5
-2019-03-20 10:55:56.781{%PARSER_ERROR[thead]}DEBUG c.t.o.dao.ProductCategoryDao.deleteProductCategory - ==>  Preparing: DELETE FROM tb_product_category WHERE product_category_id = ? AND shop_id = ? 
-2019-03-20 10:55:56.781{%PARSER_ERROR[thead]}DEBUG c.t.o.dao.ProductCategoryDao.deleteProductCategory - ==> Parameters: 1(Long), 1(Long)
-2019-03-20 10:55:56.854{%PARSER_ERROR[thead]}DEBUG c.t.o.dao.ProductCategoryDao.deleteProductCategory - <==    Updates: 1
-2019-03-20 10:55:56.855{%PARSER_ERROR[thead]}DEBUG c.t.o.dao.ProductCategoryDao.deleteProductCategory - ==>  Preparing: DELETE FROM tb_product_category WHERE product_category_id = ? AND shop_id = ? 
-2019-03-20 10:55:56.855{%PARSER_ERROR[thead]}DEBUG c.t.o.dao.ProductCategoryDao.deleteProductCategory - ==> Parameters: 2(Long), 1(Long)
-2019-03-20 10:55:56.862{%PARSER_ERROR[thead]}DEBUG c.t.o.dao.ProductCategoryDao.deleteProductCategory - <==    Updates: 1
-2019-03-20 10:56:56.974{%PARSER_ERROR[thead]}DEBUG c.t.o.d.P.batchInsertProductCategory - ==>  Preparing: INSERT INTO tb_product_category(product_category_name,priority,create_time,shop_id) VALUES ( ?, ?, system, ? ) , ( ?, ?, system, ? ) 
-2019-03-20 10:56:57.067{%PARSER_ERROR[thead]}DEBUG c.t.o.d.P.batchInsertProductCategory - ==> Parameters: 商品类别1(String), 1(Integer), 1(Long), 商品类别2(String), 2(Integer), 1(Long)
-2019-03-20 10:58:51.721{%PARSER_ERROR[thead]}DEBUG c.t.o.d.P.batchInsertProductCategory - ==>  Preparing: INSERT INTO tb_product_category(product_category_name,priority,create_time,shop_id) VALUES ( ?, ?, now(), ? ) , ( ?, ?, now(), ? ) 
-2019-03-20 10:58:51.784{%PARSER_ERROR[thead]}DEBUG c.t.o.d.P.batchInsertProductCategory - ==> Parameters: 商品类别1(String), 1(Integer), 1(Long), 商品类别2(String), 2(Integer), 1(Long)
-2019-03-20 10:58:51.869{%PARSER_ERROR[thead]}DEBUG c.t.o.d.P.batchInsertProductCategory - <==    Updates: 2
+2019-03-26 11:43:59.139{%PARSER_ERROR[thead]}DEBUG c.t.o2o.dao.ProductImgDao.batchInsertProductImg - ==>  Preparing: INSERT INTO tb_product_img(img_addr,img_desc,priority,create_time,product_id) VALUES ( ?, ?, ?, ?, ? ) , ( ?, ?, ?, ?, ? ) 
+2019-03-26 11:43:59.265{%PARSER_ERROR[thead]}DEBUG c.t.o2o.dao.ProductImgDao.batchInsertProductImg - ==> Parameters: 图片1(String), 测试图片1(String), 1(Integer), 2019-03-26 11:43:58.273(Timestamp), 1(Long), 图片2(String), 测试图片2(String), 1(Integer), 2019-03-26 11:43:58.273(Timestamp), 2(Long)
+2019-03-26 11:46:48.429{%PARSER_ERROR[thead]}DEBUG c.t.o2o.dao.ProductImgDao.batchInsertProductImg - ==>  Preparing: INSERT INTO tb_product_img(img_addr,img_desc,priority,create_time,product_id) VALUES ( ?, ?, ?, ?, ? ) , ( ?, ?, ?, ?, ? ) 
+2019-03-26 11:46:48.522{%PARSER_ERROR[thead]}DEBUG c.t.o2o.dao.ProductImgDao.batchInsertProductImg - ==> Parameters: 图片1(String), 测试图片1(String), 1(Integer), 2019-03-26 11:46:41.995(Timestamp), 1(Long), 图片2(String), 测试图片2(String), 1(Integer), 2019-03-26 11:46:41.995(Timestamp), 1(Long)
+2019-03-26 11:48:37.454{%PARSER_ERROR[thead]}DEBUG c.t.o2o.dao.ProductImgDao.batchInsertProductImg - ==>  Preparing: INSERT INTO tb_product_img(img_addr,img_desc,priority,create_time,product_id) VALUES ( ?, ?, ?, ?, ? ) , ( ?, ?, ?, ?, ? ) 
+2019-03-26 11:48:37.587{%PARSER_ERROR[thead]}DEBUG c.t.o2o.dao.ProductImgDao.batchInsertProductImg - ==> Parameters: 图片1(String), 测试图片1(String), 1(Integer), 2019-03-26 11:48:36.645(Timestamp), 1(Long), 图片2(String), 测试图片2(String), 1(Integer), 2019-03-26 11:48:36.645(Timestamp), 1(Long)
+2019-03-26 11:48:37.618{%PARSER_ERROR[thead]}DEBUG c.t.o2o.dao.ProductImgDao.batchInsertProductImg - <==    Updates: 2
+2019-03-26 15:57:21.458{%PARSER_ERROR[thead]}DEBUG c.t.o2o.dao.ProductImgDao.batchInsertProductImg - ==>  Preparing: INSERT INTO tb_product_img(img_addr,img_desc,priority,create_time,product_id) VALUES ( ?, ?, ?, ?, ? ) , ( ?, ?, ?, ?, ? ) 
+2019-03-26 15:57:21.515{%PARSER_ERROR[thead]}DEBUG c.t.o2o.dao.ProductImgDao.batchInsertProductImg - ==> Parameters: 图片1(String), 测试图片1(String), 1(Integer), 2019-03-26 15:57:20.651(Timestamp), 1(Long), 图片2(String), 测试图片2(String), 1(Integer), 2019-03-26 15:57:20.651(Timestamp), 1(Long)
+2019-03-26 15:57:21.570{%PARSER_ERROR[thead]}DEBUG c.t.o2o.dao.ProductImgDao.batchInsertProductImg - <==    Updates: 2
+2019-03-26 16:05:46.530{%PARSER_ERROR[thead]}DEBUG c.t.o2o.dao.ProductImgDao.batchInsertProductImg - ==>  Preparing: INSERT INTO tb_product_img(img_addr,img_desc,priority,create_time,product_id) VALUES ( ?, ?, ?, ?, ? ) , ( ?, ?, ?, ?, ? ) 
+2019-03-26 16:05:46.622{%PARSER_ERROR[thead]}DEBUG c.t.o2o.dao.ProductImgDao.batchInsertProductImg - ==> Parameters: 图片1(String), 测试图片1(String), 1(Integer), 2019-03-26 16:05:45.749(Timestamp), 1(Long), 图片2(String), 测试图片2(String), 1(Integer), 2019-03-26 16:05:45.749(Timestamp), 1(Long)
+2019-03-26 16:05:46.697{%PARSER_ERROR[thead]}DEBUG c.t.o2o.dao.ProductImgDao.batchInsertProductImg - <==    Updates: 2
+2019-03-26 16:06:16.970{%PARSER_ERROR[thead]}DEBUG c.t.o2o.dao.ProductImgDao.batchInsertProductImg - ==>  Preparing: INSERT INTO tb_product_img(img_addr,img_desc,priority,create_time,product_id) VALUES ( ?, ?, ?, ?, ? ) , ( ?, ?, ?, ?, ? ) 
+2019-03-26 16:06:17.068{%PARSER_ERROR[thead]}DEBUG c.t.o2o.dao.ProductImgDao.batchInsertProductImg - ==> Parameters: 图片1(String), 测试图片1(String), 1(Integer), 2019-03-26 16:06:16.24(Timestamp), 1(Long), 图片2(String), 测试图片2(String), 1(Integer), 2019-03-26 16:06:16.24(Timestamp), 1(Long)
+2019-03-26 16:06:17.135{%PARSER_ERROR[thead]}DEBUG c.t.o2o.dao.ProductImgDao.batchInsertProductImg - <==    Updates: 2
+2019-03-26 16:06:48.616{%PARSER_ERROR[thead]}DEBUG c.t.o2o.dao.ProductImgDao.batchInsertProductImg - ==>  Preparing: INSERT INTO tb_product_img(img_addr,img_desc,priority,create_time,product_id) VALUES ( ?, ?, ?, ?, ? ) , ( ?, ?, ?, ?, ? ) 
+2019-03-26 16:06:48.730{%PARSER_ERROR[thead]}DEBUG c.t.o2o.dao.ProductImgDao.batchInsertProductImg - ==> Parameters: 图片1(String), 测试图片1(String), 1(Integer), 2019-03-26 16:06:47.806(Timestamp), 1(Long), 图片2(String), 测试图片2(String), 1(Integer), 2019-03-26 16:06:47.806(Timestamp), 1(Long)
+2019-03-26 16:06:48.787{%PARSER_ERROR[thead]}DEBUG c.t.o2o.dao.ProductImgDao.batchInsertProductImg - <==    Updates: 2
+2019-03-26 16:15:02.510{%PARSER_ERROR[thead]}DEBUG com.testssm.o2o.util.ImageUtil - current relativeAddr is:\item\shop\1\2019032616150264044.jpg
+2019-03-26 16:15:02.517{%PARSER_ERROR[thead]}DEBUG com.testssm.o2o.util.ImageUtil - current complete addr is:D:\uploadimg\image\\item\shop\1\2019032616150264044.jpg
+2019-03-26 16:15:02.517{%PARSER_ERROR[thead]}DEBUG com.testssm.o2o.util.ImageUtil - basePath:/D:/test_ssm/o2o/target/test-classes/
+2019-03-26 16:15:05.842{%PARSER_ERROR[thead]}DEBUG com.testssm.o2o.dao.ProductDao.insertProduct - ==>  Preparing: INSERT INTO tb_product(product_name,product_desc,img_addr,normal_price,promotion_price, priority,create_time,last_edit_time,enable_status,product_category_id,shop_id) VALUES (?,?,?,?,?, ?,?,?,?,?,?) 
+2019-03-26 16:15:06.143{%PARSER_ERROR[thead]}DEBUG com.testssm.o2o.dao.ProductDao.insertProduct - ==> Parameters: 测试商品1(String), 测试商品1(String), \item\shop\1\2019032616150264044.jpg(String), null, null, 20(Integer), 2019-03-26 16:14:51.477(Timestamp), 2019-03-26 16:14:52.005(Timestamp), 1(Integer), 1(Long), 1(Long)
+2019-03-26 16:15:06.157{%PARSER_ERROR[thead]}DEBUG com.testssm.o2o.dao.ProductDao.insertProduct - <==    Updates: 1
+2019-03-26 16:15:24.403{%PARSER_ERROR[thead]}DEBUG com.testssm.o2o.util.ImageUtil - current relativeAddr is:\item\shop\1\2019032616152475794.jpg
+2019-03-26 16:15:24.406{%PARSER_ERROR[thead]}DEBUG com.testssm.o2o.util.ImageUtil - current complete addr is:D:\uploadimg\image\\item\shop\1\2019032616152475794.jpg
+2019-03-26 16:15:24.529{%PARSER_ERROR[thead]}DEBUG com.testssm.o2o.util.ImageUtil - current relativeAddr is:\item\shop\1\2019032616152451519.jpg
+2019-03-26 16:15:24.531{%PARSER_ERROR[thead]}DEBUG com.testssm.o2o.util.ImageUtil - current complete addr is:D:\uploadimg\image\\item\shop\1\2019032616152451519.jpg
+2019-03-26 16:15:24.686{%PARSER_ERROR[thead]}DEBUG c.t.o2o.dao.ProductImgDao.batchInsertProductImg - ==>  Preparing: INSERT INTO tb_product_img(img_addr,img_desc,priority,create_time,product_id) VALUES ( ?, ?, ?, ?, ? ) , ( ?, ?, ?, ?, ? ) 
+2019-03-26 16:15:24.697{%PARSER_ERROR[thead]}DEBUG c.t.o2o.dao.ProductImgDao.batchInsertProductImg - ==> Parameters: \item\shop\1\2019032616152475794.jpg(String), null, null, 2019-03-26 16:15:24.528(Timestamp), 2(Long), \item\shop\1\2019032616152451519.jpg(String), null, null, 2019-03-26 16:15:24.62(Timestamp), 2(Long)
+2019-03-26 16:18:19.535{%PARSER_ERROR[thead]}DEBUG com.testssm.o2o.util.ImageUtil - current relativeAddr is:\item\shop\1\2019032616181931336.jpg
+2019-03-26 16:18:19.540{%PARSER_ERROR[thead]}DEBUG com.testssm.o2o.util.ImageUtil - current complete addr is:D:\uploadimg\image\\item\shop\1\2019032616181931336.jpg
+2019-03-26 16:18:19.540{%PARSER_ERROR[thead]}DEBUG com.testssm.o2o.util.ImageUtil - basePath:/D:/test_ssm/o2o/target/test-classes/
+2019-03-26 16:18:19.747{%PARSER_ERROR[thead]}DEBUG com.testssm.o2o.dao.ProductDao.insertProduct - ==>  Preparing: INSERT INTO tb_product(product_name,product_desc,img_addr,normal_price,promotion_price, priority,create_time,last_edit_time,enable_status,product_category_id,shop_id) VALUES (?,?,?,?,?, ?,?,?,?,?,?) 
+2019-03-26 16:18:19.819{%PARSER_ERROR[thead]}DEBUG com.testssm.o2o.dao.ProductDao.insertProduct - ==> Parameters: 测试商品1(String), 测试商品1(String), \item\shop\1\2019032616181931336.jpg(String), null, null, 20(Integer), 2019-03-26 16:18:19.523(Timestamp), 2019-03-26 16:18:19.523(Timestamp), 1(Integer), 1(Long), 1(Long)
+2019-03-26 16:18:19.823{%PARSER_ERROR[thead]}DEBUG com.testssm.o2o.dao.ProductDao.insertProduct - <==    Updates: 1
+2019-03-26 16:18:35.935{%PARSER_ERROR[thead]}DEBUG com.testssm.o2o.util.ImageUtil - current relativeAddr is:\item\shop\1\2019032616183565874.jpg
+2019-03-26 16:18:35.936{%PARSER_ERROR[thead]}DEBUG com.testssm.o2o.util.ImageUtil - current complete addr is:D:\uploadimg\image\\item\shop\1\2019032616183565874.jpg
+2019-03-26 16:18:46.629{%PARSER_ERROR[thead]}DEBUG com.testssm.o2o.util.ImageUtil - current relativeAddr is:\item\shop\1\2019032616184621313.jpg
+2019-03-26 16:18:46.630{%PARSER_ERROR[thead]}DEBUG com.testssm.o2o.util.ImageUtil - current complete addr is:D:\uploadimg\image\\item\shop\1\2019032616184621313.jpg
+2019-03-26 16:19:29.809{%PARSER_ERROR[thead]}DEBUG c.t.o2o.dao.ProductImgDao.batchInsertProductImg - ==>  Preparing: INSERT INTO tb_product_img(img_addr,img_desc,priority,create_time,product_id) VALUES ( ?, ?, ?, ?, ? ) , ( ?, ?, ?, ?, ? ) 
+2019-03-26 16:19:29.812{%PARSER_ERROR[thead]}DEBUG c.t.o2o.dao.ProductImgDao.batchInsertProductImg - ==> Parameters: \item\shop\1\2019032616183565874.jpg(String), xiaohuangren.jpg(String), null, 2019-03-26 16:18:40.904(Timestamp), 3(Long), \item\shop\1\2019032616184621313.jpg(String), dabai.jpg(String), null, 2019-03-26 16:18:49.081(Timestamp), 3(Long)
+2019-03-26 16:19:29.815{%PARSER_ERROR[thead]}DEBUG c.t.o2o.dao.ProductImgDao.batchInsertProductImg - <==    Updates: 2

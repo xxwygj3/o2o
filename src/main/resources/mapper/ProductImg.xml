@@ -10,14 +10,11 @@
         <foreach collection="list" item="productImg" index="index" separator=",">
             (
             #{productImg.imgAddr},
-            #{},
-            #{},
-            #{},
-            #{}
+            #{productImg.imgDesc},
+            #{productImg.priority},
+            #{productImg.createTime},
+            #{productImg.productId}
             )
         </foreach>
-
-        (#{productName},#{productDesc},#{imgAddr},#{normalPrice},#{promotionPrice},
-            #{priority},#{createTime},#{lastEditTime},#{enableStatus},#{productCategory.productCategoryId},#{shop.shopId})
     </insert>
 </mapper>
