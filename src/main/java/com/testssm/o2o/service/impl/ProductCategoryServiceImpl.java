@@ -1,6 +1,7 @@
 package com.testssm.o2o.service.impl;
 
 import com.testssm.o2o.dao.ProductCategoryDao;
+import com.testssm.o2o.dao.ProductDao;
 import com.testssm.o2o.dto.ProductCategoryExecution;
 import com.testssm.o2o.entity.ProductCategory;
 import com.testssm.o2o.enums.ProductCategoryStateEnum;
@@ -16,6 +17,8 @@ import java.util.List;
 public class ProductCategoryServiceImpl implements ProductCategoryService {
     @Autowired
     private ProductCategoryDao productCategoryDao;
+    @Autowired
+    private ProductDao productDao;
 
     @Override
     public List<ProductCategory> getProductCategoryList(long shopId) {
@@ -44,16 +47,25 @@ public class ProductCategoryServiceImpl implements ProductCategoryService {
     @Override
     @Transactional
     public ProductCategoryExecution deleteProductCategory(long productCategoryId, long shopId) throws ProductCategoryOperationException {
-        //将此商品类别下的商品的类别Id置为空
+        //解除tb_product里的商品与该productCategoryId的关联
         try {
-            int effectedNum = productCategoryDao.deleteProductCategory(productCategoryId,shopId);
+            int effectedNum = productDao.updateProductCategoryToNull(productCategoryId);
             if(effectedNum <= 0){
-                throw new ProductCategoryOperationException("商品类别删除失败");
-            }else{
-                return new ProductCategoryExecution(ProductCategoryStateEnum.SUCCESS);
+                throw new ProductCategoryOperationException("商品类别更新失败");
             }
         }catch (Exception e){
             throw new ProductCategoryOperationException("deleteProductCategory error:"+e.getMessage());
+        }
+        //删除该productCategoryId
+        try {
+            int effectedNum = productCategoryDao.deleteProductCategory(productCategoryId, shopId);
+            if (effectedNum <= 0) {
+                throw new RuntimeException("商品类别删除失败");
+            } else {
+                return new ProductCategoryExecution(ProductCategoryStateEnum.SUCCESS);
+            }
+        } catch (Exception e) {
+            throw new RuntimeException("deleteProductCategory error: " + e.getMessage());
         }
     }
 }
